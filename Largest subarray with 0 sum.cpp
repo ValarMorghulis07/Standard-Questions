@@ -30,7 +30,7 @@ ll INF=1e9+7;
  }
  cout<<maxx<<endl;
 }*/
-void zero1(ll a[],ll n)
+void zero1(ll a[],ll n)//o(n)
 {
  map<ll,ll>mp;
  ll sum,maxx=0;
