@@ -33,7 +33,7 @@ ll INF=1e9+7;
 void zero1(ll a[],ll n)//o(n)
 {
  map<ll,ll>mp;
- ll sum,maxx=0;
+ ll sum=0,maxx=0;
  for(ll i=0;i<n;i++)
  {
   sum+=a[i];
