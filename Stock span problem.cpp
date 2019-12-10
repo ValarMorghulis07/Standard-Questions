@@ -62,7 +62,7 @@ int main()
   f(n)
    cin>>a[i];
   //solve1(a,n)[o(n*n)];
-  solve2(a,n);
+  solve2(a,n);//o(n)
  }
  return 0;
 }
