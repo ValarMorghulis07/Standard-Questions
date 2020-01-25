@@ -15,7 +15,7 @@ typedef long long int ll;
 ll HRX=1e18;
 ll INF=1e9+7;
 
-ll ans=0;
+ll ans;
 
 void mergeit(ll a[],ll l,ll mid,ll r)
 {
@@ -71,6 +71,7 @@ int main()
  cin>>t;
  f(t)
  {
+ ans=0;
   ll n;
   cin>>n;
   ll a[n];
