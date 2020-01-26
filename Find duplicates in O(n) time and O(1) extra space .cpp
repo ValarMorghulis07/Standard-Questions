@@ -30,13 +30,15 @@ int main()
   ll ff=0;
   for(ll i=0;i<n;i++)
   {
-   if(a[abs(a[i])]>=0)
-     a[abs(a[i])]=-a[abs(a[i])];
-   else
+   if(a[a[i]%n]>=n)
    {
-    cout<<abs(a[i])<<" ";
-    ff=1;
+    if(a[a[i]%n]<2*n)//If repeated more than 2 times
+    {
+     cout<<a[i]%n<<" ";
+     ff=1;
+    }
    }
+   a[a[i]%n]+=n;
 
   }
   if(ff==0)
