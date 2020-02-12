@@ -25,8 +25,8 @@ void primefactors()//o(sqrt(n))
  ll zz=N;
  while(zz%2==0)
  {
-  cout<<"2"<" ";
-  N/=2;
+  cout<<"2"<<" ";
+  zz/=2;
  }
  for(ll i=3;i<=sqrt(zz);i+=2)
  {
@@ -61,7 +61,7 @@ void sieve()//o(log(log(n))
 
 }
 
-void getprimefactors(N)
+void getprimefactors(ll x)
 {
  while(x!=1)
  {
@@ -76,6 +76,6 @@ int main()
  hs;
  primefactors();
  sieve();
- getprimefactors();
+ getprimefactors(100);
  return 0;
 }
