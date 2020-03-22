@@ -15,7 +15,49 @@ typedef long long int ll;
 ll HRX=1e18;
 ll INF=1e9+7;
 
-bool checkvalid(string &str,ll &cnt,ll &p,ll &q,char ch)
+
+bool check(string str)//O(n)
+{
+ ll n=str.length();
+ stack<char>stk;
+ for(ll i=0;i<n;i++)
+ {
+  if(str[i]=='(' || str[i]=='{' || str[i]=='[')
+  {
+   stk.push(str[i]);
+   continue;
+  }
+  if(stk.empty())
+    return false;
+  else if(str[i]==']')
+  {
+   char x=stk.top();
+   stk.pop();
+   if(x=='{' || x=='(')
+     return false;
+  }
+  else if(str[i]==')')
+  {
+   char x=stk.top();
+   stk.pop();
+   if(x=='{' || x=='[')
+     return false;
+  }
+  else if(str[i]=='}')
+  {
+   char x=stk.top();
+   stk.pop();
+   if(x=='[' || x=='(')
+     return false;
+  }
+ }
+ if(stk.empty())
+    return true;
+ else
+    return false;
+}
+
+bool checkvalid(string &str,ll &cnt,ll &p,ll &q,char ch)//O(1)
 {
  cnt--;
  if(q>-1 && str[q]==ch)
