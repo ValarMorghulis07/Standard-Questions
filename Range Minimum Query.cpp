@@ -42,7 +42,7 @@ void update(ll a[],ll node,ll start,ll endd,ll idx,ll val)
  {
   ll mid=(start+endd)/2;
   if(start<=idx && idx<=mid)
-    update(a,2*node+1,start,mid,idx,val);
+    update(a,2*node+1,start,mid,idx,val);//0's index
   else
     update(a,2*node+2,mid+1,endd,idx,val);
   tree[node]=min(tree[2*node+1],tree[2*node+2]);
