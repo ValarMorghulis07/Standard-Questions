@@ -31,7 +31,7 @@ void KMPpreprocess(string pat)
  ll i=0,j=-1;
  while(i<pat.length())
  {
-  while(j>=0 && pat[i]!=pat[j])
+  while(j>=0 && pat[i]!=pat[j])// length of the longest suffix which is also prefix in the pattern and reset value at index gives last prefix index
     j=reset[j];
   i++;
   j++;
@@ -45,7 +45,7 @@ void KMPsearch(string str,string pat)
  ll i=0,j=0;
  while(i<str.size())
  {
-  while(j>=0 && str[i]!=pat[j])
+  while(j>=0 && str[i]!=pat[j])// suffix from string and prefix from pattern ,hence no need to revisit suffix
     j=reset[j];
   i++;
   j++;
@@ -76,5 +76,6 @@ int main()
     cout<<"-1";
   cout<<"\n";
  }
+ //O(n) (Worst Case)
  return 0;
 }
