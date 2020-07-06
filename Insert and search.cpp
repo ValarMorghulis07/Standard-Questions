@@ -39,7 +39,7 @@ Node* getNode()
  return temp;
 }
 
-void Insert(Node* root,string str)
+void Insert(Node* root,string str)//O(l*n) where l is avg. length of string
 {
  Node* temp=root;
  rep(i,0,str.length())
@@ -52,17 +52,30 @@ void Insert(Node* root,string str)
  temp->isEnd=true;
 }
 
-bool Search(Node* root,string str)
+bool Search(Node* root,string str)//O(M) where M is the max length of string
 {
  Node* temp=root;
  rep(i,0,str.length())
  {
   ll idx=str[i]-'a';
   if(!temp->children[idx])
-    return false; // If string(search) size is greater
+    return false;
   temp=temp->children[idx];
  }
  return temp->isEnd;
+}
+
+bool startsWith(string str)
+{
+ Node* temp=root;
+ rep(i,0,str.length())
+ {
+  ll idx=str[i]-'a';
+  if(!temp->children[idx])
+    return false;
+  temp=temp->children[idx];
+ }
+ return true;
 }
 
 int main()
