@@ -59,7 +59,7 @@ bool Search(Node* root,string str)
  {
   ll idx=str[i]-'a';
   if(!temp->children[idx])
-    return false;
+    return false; // If string(search) size is greater
   temp=temp->children[idx];
  }
  return temp->isEnd;
