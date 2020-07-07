@@ -14,19 +14,40 @@ using namespace std;
 typedef long long int ll;
 typedef long double ld;
 ll ESP=1e18;
-ll FCB=1e9+7;
-ll prime=119;
+ll FCB=1e9+9;
+ll prime=31;
 ll dir[][2]={{0,1},{0,-1},{1,0},{-1,0}};
 /*
  freopen("in.txt","r",stdin);
  freopen("out.txt","w",stdout);
 */
 
-ll CreateHash(string str,ll m) //O(pat.length()
+/*
+O(m+n)(Average and Best)
+O(m*n) (Worst)
+*/
+
+const ll N=1e5+5;
+ll power[N];
+
+
+void doit(string str)
+{
+ ll n=str.length();
+ power[0]=1;
+ for(ll i=1;i<n;i++)
+    power[i]=((power[i-1]%FCB)*(prime%FCB))%FCB;
+}
+
+ll CreateHash(string str,ll m) //O(pat.length())
 {
  ll res=0;
  rep(i,0,m)
-  res+=(str[i]*pow(prime,i));
+ {
+  res+=(str[i]*power[i]);
+  res%=FCB;
+ }
+
  return res;
 }
 
@@ -34,7 +55,8 @@ ll RollingHash(string str,ll idx1,ll idx2,ll OldHash,ll m) //O(1)
 {
  ll NewHash=OldHash-str[idx1];
  NewHash/=prime;
- NewHash+=(str[idx2]*pow(prime,m-1));
+ NewHash+=(str[idx2]*power[m-1]);
+ NewHash%=FCB;
  return NewHash;
 
 
@@ -63,6 +85,12 @@ int main()
  {
   string str,pat;
   cin>>str>>pat;
+  if(pat.length()>str.length())
+  {
+   cout<<"-1"<<"\n";
+   continue;
+  }
+  doit(str);
   ll PatHash=CreateHash(pat,pat.length());
   ll StrHash=CreateHash(str,pat.length());
   bool ff=0;
@@ -82,7 +110,6 @@ int main()
   cout<<"\n";
  }
  return 0;
- //O(m+n)(Average and Best)
- //O(m*n) (Worst)
+
 
 }
