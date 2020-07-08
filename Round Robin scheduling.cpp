@@ -87,4 +87,5 @@ int main()
  return 0;
 }
 
-// Consider arrival time of all process to be 0
+// Consider arrival time of all process to be 0, Since arrival time(at) is 0 for all so tat==ct for all(ct=completion time)
+// tat=ct-at,wt=tat-bt
