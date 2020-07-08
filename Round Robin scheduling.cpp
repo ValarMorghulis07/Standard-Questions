@@ -86,3 +86,5 @@ int main()
  }
  return 0;
 }
+
+// Consider arrival time of all process to be 0
