@@ -15,7 +15,7 @@ typedef long long int ll;
 ll HRX=1e18;
 ll INF=1e9+7;
 
-void solve(string str,ll n)
+void solve(string str,ll n)// in ane traversal
 {
  vector<char>vec;
  queue<char>q;
