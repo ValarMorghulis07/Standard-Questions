@@ -1,4 +1,4 @@
-//intToRoma
+//intToRoman
 
 class Solution {
 public:
