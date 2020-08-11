@@ -1,3 +1,5 @@
+// 703. Kth Largest Element in a Stream
+
 class KthLargest {
 public:
     priority_queue<int,vector<int>,greater<int>>pq;
@@ -22,8 +24,20 @@ public:
     }
 };
 
-/**
- * Your KthLargest object will be instantiated and called as such:
- * KthLargest* obj = new KthLargest(k, nums);
- * int param_1 = obj->add(val);
- */
+
+// 215. Kth Largest Element in an Array
+
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k)
+    {
+     priority_queue<int,vector<int>,greater<int>>pq;
+     for(int i=0;i<nums.size();i++)
+     {
+      pq.push(nums[i]);
+      if(pq.size()>k)
+          pq.pop();
+     }
+     return pq.top();
+    }
+};
