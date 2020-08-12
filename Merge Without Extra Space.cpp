@@ -1,4 +1,4 @@
-// Merge Two sorted Arrays
+// 88. Merge Sorted Array
 
 // O(n1+n2) && O(n1+n2)
 
@@ -30,7 +30,26 @@ void mergeArrays(int arr1[], int arr2[], int n1,
         arr3[k++] = arr2[j++]; 
 } 
 
-// Merge k sorted arrays
+// in O(1) space
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
+    {
+      int i=m-1,j=n-1,tar=m+n-1;
+      while(j>=0)
+      {
+       if(i>=0 && nums1[i]>nums2[j])
+           nums1[tar]=nums1[i],i--;
+       else
+           nums1[tar]=nums2[j],j--;
+       tar--;
+      }
+      
+    }
+};
+
+// Merge k sorted arrays in O(N Log k) time.
 
 #include <bits/stdc++.h>
 #define mem(dp,a) memset(dp,a,sizeof(dp))
