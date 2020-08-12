@@ -1,3 +1,37 @@
+// Merge Two sorted Arrays
+
+// O(n1+n2) && O(n1+n2)
+
+void mergeArrays(int arr1[], int arr2[], int n1, 
+                             int n2, int arr3[]) 
+{ 
+    int i = 0, j = 0, k = 0; 
+  
+    // Traverse both array 
+    while (i<n1 && j <n2) 
+    { 
+        // Check if current element of first 
+        // array is smaller than current element 
+        // of second array. If yes, store first 
+        // array element and increment first array 
+        // index. Otherwise do same with second array 
+        if (arr1[i] < arr2[j]) 
+            arr3[k++] = arr1[i++]; 
+        else
+            arr3[k++] = arr2[j++]; 
+    } 
+  
+    // Store remaining elements of first array 
+    while (i < n1) 
+        arr3[k++] = arr1[i++]; 
+  
+    // Store remaining elements of second array 
+    while (j < n2) 
+        arr3[k++] = arr2[j++]; 
+} 
+
+// Merge k sorted arrays
+
 #include <bits/stdc++.h>
 #define mem(dp,a) memset(dp,a,sizeof(dp))
 #define pb(x) push_back(x)
@@ -15,15 +49,16 @@ typedef long long int ll;
 ll HRX=1e18;
 ll INF=1e9+7;
 
-vector<ll>adj[20];
-vector<ll>ans;
+const ll N=1e3+5;
+ll a[N][N];
+ll k,n;
 
-
-void DoIt()
+void MergeSortedArray()
 {
+ vector<ll>ans;
  priority_queue<pair<ll,pair<ll,ll>>,vector<pair<ll,pair<ll,ll>>>,greater<pair<ll,pair<ll,ll>>>>pq;
- pq.push(m_p(adj[0][0],m_p(0,0)));
- pq.push(m_p(adj[1][0],m_p(1,0)));
+ for(ll i=0;i<k;i++)
+    pq.push(m_p(a[i][0],m_p(i,0)));
  while(!pq.empty())
  {
   ll u=pq.top().first;
@@ -31,14 +66,11 @@ void DoIt()
   ll w=pq.top().second.second;
   pq.pop();
   ans.pb(u);
-  if(w+1<adj[v].size())
-    pq.push(m_p(adj[v][w+1],m_p(v,w+1)));
+  if(w+1<n)
+    pq.push(m_p(a[v][w+1],m_p(v,w+1)));
  }
-
  f(ans.size())
   cout<<ans[i]<<" ";
- cout<<"\n";
-
 }
 int main()
 {
@@ -47,24 +79,16 @@ int main()
  cin>>t;
  f(t)
  {
-  ll m,n;
-  cin>>m>>n;
-  f(m)
+  cin>>k>>n;
+  f(k)
   {
-   ll x;
-   cin>>x;
-   adj[0].pb(x);
+   r(n)
+   {
+    cin>>a[i][j];
+   }
   }
-  f(n)
-  {
-   ll x;
-   cin>>x;
-   adj[1].pb(x);
-  }
-  DoIt();
-  adj[0].clear();
-  adj[1].clear();
-  ans.clear();
+  MergeSortedArray();
+  cout<<"\n";
  }
  return 0;
 }
