@@ -58,3 +58,28 @@ public:
          return false;
     }
 };
+
+// 315. Count of Smaller Numbers After Self
+
+class Solution {
+public:
+    vector<int> countSmaller(vector<int>& nums) 
+    {
+     int n=nums.size();
+     vector<int>vv;
+     multiset<int>ss;
+     
+     for(int i=n-1;i>=0;i--)
+     {
+      ss.insert(nums[i]);
+      auto xx=ss.lower_bound(nums[i]);
+      vv.push_back(distance(ss.begin(),xx));
+     }
+     reverse(vv.begin(),vv.end());
+     return vv;
+     
+    }
+};
+
+
+
