@@ -187,4 +187,53 @@ void buildHeap(int arr[], int n)  // O(n)
  }
 }
 
+// Quick select--> Quickselect is a selection algorithm to find the k-th smallest element in an unordered list
+
+
+ll partition(ll a[],ll l,ll r)
+{
+ ll pivot=a[r],i=l;
+ for(ll j=l;j<r;j++)
+ {
+  if(a[j]<=pivot)
+  {
+   swap(a[i],a[j]);
+   i++;
+  }
+ }
+ swap(a[i],a[r]);
+ return i;
+}
+ll doit(ll a[],ll l,ll r,ll k)
+{
+ if(k>0 && k<=r-l+1)
+ {
+  ll idx=partition(a,l,r);
+  if(idx-l==k-1)
+   return a[idx];
+  else if(idx-l>k-1)
+   return doit(a,l,idx-1,k);
+  else
+   return doit(a,idx+1,r,k-idx-1+l);
+ }
+ return -1;
+}
+
+int main()
+{
+ hs;
+ ll t;
+ cin>>t;
+ while(t--)
+ {
+ ll n,k;
+ cin>>n>>k;
+ ll a[n];
+ rep(i,0,n)
+  cin>>a[i];
+ cout<<doit(a,0,n-1,k)<<"\n";
+ }
+ return 0;
+}
+
 
