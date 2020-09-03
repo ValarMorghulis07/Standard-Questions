@@ -68,3 +68,18 @@ void quicksort(int arr[],int low,int high)
  }
 }
 
+// Selection sort --> It is both either u bring maximum element int the elast or minimum element int he beginning
+
+void selectionSort(int arr[], int n)
+{
+   for(int i=0;i<n-1;i++)
+   {
+    int idx=i;
+    for(int j=i+1;j<n;j++)
+    {
+     if(arr[j]<arr[idx])
+      idx=j;
+    }
+    swap(arr[i],arr[idx]);
+   }
+}
