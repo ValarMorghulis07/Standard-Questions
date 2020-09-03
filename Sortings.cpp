@@ -1,4 +1,24 @@
+/*               BEST             AVG            WORST
+Selection Sort	  Ω(n^2)	        θ(n^2)	          O(n^2)
+Bubble Sort	     Ω(n)	          θ(n^2)	          O(n^2)
+Insertion Sort  	Ω(n)	          θ(n^2)	          O(n^2)
+Heap Sort	       Ω(n log(n))	   θ(n log(n))	     O(n log(n))
+Quick Sort	      Ω(n log(n))	   θ(n log(n))	     O(n^2)
+Merge Sort	      Ω(n log(n))	   θ(n log(n))	     O(n log(n))
+Bucket Sort	     Ω(n+k)	        θ(n+k)	          O(n^2)
+Radix Sort	      Ω(nk)	         θ(nk)	           O(nk)
+*/
+
+
 // Merge sort
+
+/*
+Time complexity: O(n*logn)
+Auxiliary Space: O(n)
+Algorithmic Paradigm: Divide and Conquer
+Sorting In Place: No in a typical implementation
+Stable: Yes
+*/
 
 void merge(int arr[], int l, int m, int r)
 {
@@ -86,6 +106,15 @@ void selectionSort(int arr[], int n)
 
 // Bubble Sort(Repeatedly swapping adjacent elements,sending max element at last in consecutive loops)
 
+/*
+Worst and Average Case Time Complexity: O(n*n). Worst case occurs when array is reverse sorted.
+Best Case Time Complexity: O(n). Best case occurs when array is already sorted.
+Auxiliary Space: O(1)
+Boundary Cases: Bubble sort takes minimum time (Order of n) when elements are already sorted.
+Sorting In Place: Yes
+Stable: Yes
+*/
+
 void bubble(int arr[], int i, int n)
 {
  for(int i=0;i<n-1;i++)
@@ -99,6 +128,14 @@ void bubble(int arr[], int i, int n)
 }
 
 // Insertion Sort-->Values from the unsorted part are picked and placed at the correct position in the sorted part, Just like Cards
+
+/*
+Time Complexity: O(n*2)
+Auxiliary Space: O(1)
+Boundary Cases: Insertion sort takes maximum time to sort if elements are sorted in reverse order. And it takes minimum time (Order of n) when elements are already sorted.
+Sorting In Place: Yes (It means does not require extra space)
+Stable: Yes
+*/
 
 void insert(int arr[], int i)
 {
