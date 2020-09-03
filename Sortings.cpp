@@ -97,3 +97,21 @@ void bubble(int arr[], int i, int n)
  }
  }
 }
+
+// Insertion Sort-->Values from the unsorted part are picked and placed at the correct position in the sorted part, Just like Cards
+
+void insert(int arr[], int i)
+{
+ for(int i=1;i<n;i++)
+ {
+ int temp=arr[i];
+ int j=i-1;
+ while(j>=0 && arr[j]>temp)
+ {
+  arr[j+1]=arr[j];
+  j--;
+ }
+ arr[j+1]=temp;
+ }
+}
+
