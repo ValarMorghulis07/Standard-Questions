@@ -113,3 +113,8 @@ int main()
 
 
 }
+/*
+1
+aabaaabaaac
+aabaaac
+*/
