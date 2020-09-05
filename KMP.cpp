@@ -79,3 +79,43 @@ int main()
  //O(n) (Worst Case)
  return 0;
 }
+
+// 1392. Longest Happy Prefix
+
+/*
+A string is called a happy prefix if is a non-empty prefix which is also a suffix (excluding itself).
+Given a string s. Return the longest happy prefix of s 
+*/
+
+
+const int N=1e5+7;
+int reset[N];
+class Solution {
+public:
+    string KMP(string pat)
+    {
+     int i=0,j=-1,maxx=-1;
+     while(i<pat.length())
+     {
+      while(j>=0 && pat[i]!=pat[j])
+          j=reset[j];
+      i++;
+      j++;
+      reset[i]=j;
+      maxx=reset[i];// since suffix will be till its last pos in pat
+     }
+    
+     return pat.substr(0,maxx);
+    }
+    string longestPrefix(string s)
+    {
+     int n=s.length();
+     if(n==0 || n==1)
+         return "";
+     for(int i=0;i<N;i++)
+         reset[i]=-1;
+     return KMP(s);
+     
+     
+    }
+};
