@@ -94,7 +94,7 @@ class Solution {
 public:
     string KMP(string pat)
     {
-     int i=0,j=-1,maxx=-1;
+     int i=0,j=-1;
      while(i<pat.length())
      {
       while(j>=0 && pat[i]!=pat[j])
@@ -102,10 +102,10 @@ public:
       i++;
       j++;
       reset[i]=j;
-      maxx=reset[i];// since suffix will be till its last pos in pat
+      
      }
     
-     return pat.substr(0,maxx);
+     return pat.substr(0,reset[pat.length()]);// since suffix will be till its last pos in pat
     }
     string longestPrefix(string s)
     {
