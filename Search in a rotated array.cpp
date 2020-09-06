@@ -81,7 +81,7 @@ int bitonicpoint(vector<int> &A,int lo,int hi)
  int mid=(lo+hi)>>1;
  if(A[mid]>A[mid-1] && A[mid]>A[mid+1])
   return mid;
- else if(A[mid]>A[mid-1] && A[mid]<A[mid+1])
+ else if(A[mid]>A[mid-1])
    return bitonicpoint(A,mid,hi);
  else
    return bitonicpoint(A,lo,mid);
