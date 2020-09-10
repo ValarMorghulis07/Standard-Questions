@@ -112,6 +112,75 @@ int main()
  return 0;
 }
 
+// 378. Kth Smallest Element in a Sorted Matrix
+
+/*
+// The space complexity of the above solutions will be O(N) and the time complexity will be O(min(K,N)+K∗logN).
+    // Building a min-heap which takes O(n) time
+    //  Heapify k times which takes O(k Logn) time.
+*/
+
+
+class Solution {
+public:
+    int kthSmallest(vector<vector<int>>& matrix, int k) 
+    {
+     int n=matrix.size();
+     int cnt=1;
+   priority_queue<pair<int,pair<int,int>>,vector<pair<int,pair<int,int>>>,greater<pair<int,pair<int,int>>>>pq;
+    for(int i=0;i<n;i++)
+        pq.push(make_pair(matrix[i][0],make_pair(i,0)));
+    
+    while(!pq.empty())
+    {
+     int u=pq.top().first;
+     int v=pq.top().second.first;
+     int w=pq.top().second.second;
+     pq.pop();
+     if(cnt==k)
+         return u;
+     if(w+1<n)
+         pq.push(make_pair(matrix[v][w+1],make_pair(v,w+1)));
+     cnt++;
+    }
+    return matrix[n-1][n-1];
+    
+        
+     
+     
+    }
+};
+
+--> 2
+/*
+time:= n*log(max element-min element)
+space:= o(1)
+*/
+  
+class Solution {
+public:
+    int kthSmallest(vector<vector<int>>& matrix, int k) 
+    {
+     int n=matrix.size();
+     int lo=matrix[0][0],hi=matrix[n-1][n-1];
+     while(lo<hi)
+     {
+      int mid=(lo+hi)>>1;
+      int cnt=0;
+      for(int i=0;i<n;i++) // count number of elements smaller than equal to mid
+        cnt+=upper_bound(matrix[i].begin(),matrix[i].end(),mid)-matrix[i].begin();
+      if(cnt<k)
+          lo=mid+1;
+      else
+          hi=mid;
+     }
+     return lo;
+     
+     
+     
+    }
+};
+
 // 56. Merge Intervals
 
 vector<vector<int>> merge(vector<vector<int>>& intervals)
