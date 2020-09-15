@@ -217,3 +217,41 @@ vector<vector<int>> merge(vector<vector<int>>& intervals)
        ans.push_back(vec);
         return ans;
     }
+
+// 57. Insert Interval
+
+class Solution {
+public:
+    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) 
+    {
+     vector<vector<int>>ans;
+     intervals.push_back(newInterval);
+     sort(intervals.begin(),intervals.end());
+     int left=intervals[0][0],right=intervals[0][1];
+     int i=1;
+     while(i<intervals.size())
+     {
+      if(intervals[i][0]>=left && intervals[i][0]<=right)
+      {
+       right=max(right,intervals[i][1]);
+       i++;
+       continue;
+      }
+      else
+      {
+       vector<int>vv;
+       vv.push_back(left);
+       vv.push_back(right);
+       ans.push_back(vv);
+       left=intervals[i][0];
+       right=intervals[i][1];
+       i++;
+      }
+     }
+      vector<int>vv;
+      vv.push_back(left);
+      vv.push_back(right);
+      ans.push_back(vv);
+      return ans;
+     }
+};
