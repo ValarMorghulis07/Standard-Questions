@@ -220,6 +220,11 @@ vector<vector<int>> merge(vector<vector<int>>& intervals)
 
 // 57. Insert Interval
 
+// Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).
+// You may assume that the intervals were initially sorted according to their start times.
+
+// n*log(n)
+
 class Solution {
 public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) 
@@ -254,4 +259,56 @@ public:
       ans.push_back(vv);
       return ans;
      }
+};
+
+// O(n)
+
+/*
+First, put all intervals that are to the left of the inserted interval.
+Second, merge all intervals that intersect with the inserted interval.
+Finally, put all intervals that are to the right of the inserted interval.
+*/
+
+class Solution {
+public:
+    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) 
+    {
+     vector<vector<int>>ans;
+     int i=0;
+     
+     // First, put all intervals that are to the left of the inserted interval.
+      
+     while(i<intervals.size() && intervals[i][1]<newInterval[0])
+     {
+      vector<int>vv;
+      vv.push_back(intervals[i][0]);
+      vv.push_back(intervals[i][1]);
+      ans.push_back(vv);
+      i++;
+     }
+      
+     // Second, merge all intervals that intersect with the inserted interval.
+        
+     while(i<intervals.size() && intervals[i][0]<=newInterval[1])
+     {
+      newInterval[0]=min(newInterval[0],intervals[i][0]);
+      newInterval[1]=max(newInterval[1],intervals[i][1]);
+      i++;
+    
+     }
+     ans.push_back(newInterval);
+      
+     // Finally, put all intervals that are to the right of the inserted interval.
+     
+     while(i<intervals.size())
+     {
+      vector<int>vv;
+      vv.push_back(intervals[i][0]);
+      vv.push_back(intervals[i][1]);
+      ans.push_back(vv);
+      i++;
+     }
+        
+     return ans;
+    }
 };
