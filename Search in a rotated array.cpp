@@ -74,7 +74,7 @@ public:
     }
 };
 
-// Search in Bitonic Array!(IB)
+// Search in Bitonic Array!(IB)-->A Bitonic Sequence is a sequence of numbers which is first strictly increasing then after a point strictly decreasing.
 
 int bitonicpoint(vector<int> &A,int lo,int hi)
 {
