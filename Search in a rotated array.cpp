@@ -150,6 +150,8 @@ class Solution {
 public:
     int doit(vector<int>&nums,int lo,int hi)
     {
+     if(lo>hi)
+         return -1;
      int mid=(lo+hi)>>1;
      if(nums[mid]>nums[mid-1] && nums[mid]>nums[mid+1])
          return mid;
