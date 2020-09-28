@@ -74,6 +74,29 @@ public:
     }
 };
 
+// 852. Peak Index in a Mountain Array(n>=3)
+
+class Solution {
+public:
+    int bs(vector<int>&nums,int lo,int hi)
+    {
+     if(lo>hi)
+         return -1;
+     int mid=(lo+hi)>>1;
+     if(nums[mid]>nums[mid-1] && nums[mid]>nums[mid+1])
+         return mid;
+     if(nums[mid]<nums[mid+1])
+         return bs(nums,mid,hi);
+     else
+         return bs(nums,lo,mid);
+    }
+    int peakIndexInMountainArray(vector<int>& arr)
+    {
+     int n=arr.size();
+      return bs(arr,0,n-1);
+    }
+};
+
 // Search in Bitonic Array!(IB)-->A Bitonic Sequence is a sequence of numbers which is first strictly increasing then after a point strictly decreasing.
 
 int bitonicpoint(vector<int> &A,int lo,int hi)
