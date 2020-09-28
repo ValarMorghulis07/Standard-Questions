@@ -46,7 +46,7 @@ public:
      int mid=(lo+hi)>>1;
      if(nums[mid]==x)
          return mid;
-     while(lo<hi && nums[lo]==nums[mid] && nums[mid]==nums[hi])// for this [1,3,1,1,1] and x=3
+     while(lo<hi && nums[lo]==nums[mid] && nums[mid]==nums[hi])// for this [1,3,1,1,1] and x=3--> it is done to make the range sorted,if we dont do it may be we will not be able to find if element is present. 
         lo++,hi--;
      if(nums[lo]<=nums[mid])//nums[l...mid] is sorted
      {
