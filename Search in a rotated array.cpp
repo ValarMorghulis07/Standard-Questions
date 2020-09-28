@@ -232,3 +232,40 @@ public:
      return nums[idx];
      }
 };
+
+// 154. Find Minimum in Rotated Sorted Array II
+
+/*
+worst case(If all the elements are same) take O(N).
+Average case in O(log n) time.
+*/
+
+class Solution {
+public:
+    int bs(vector<int>&nums,int lo,int hi)
+    {
+     while(lo<hi)
+     {
+      int mid=(lo+hi)>>1;
+      if(nums[mid]==nums[hi])
+          hi--;
+      else if(nums[mid]>nums[hi]) // (1,1,1,0,1)
+          lo=mid+1;
+      else
+          hi=mid; // (1,0,1,1,1)
+     }
+     return nums[hi];
+    }
+    int findMin(vector<int>& nums)
+    {
+     int n=nums.size();
+     if(n==1)
+         return nums[0];
+     if(n==2)
+         return min(nums[0],nums[1]);
+     if(nums[n-1]>nums[0]) // already sorted
+         return nums[0];
+     return bs(nums,0,n-1);
+    
+    }
+};
