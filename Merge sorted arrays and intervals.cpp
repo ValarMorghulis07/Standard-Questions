@@ -6,15 +6,9 @@ void mergeArrays(int arr1[], int arr2[], int n1,
                              int n2, int arr3[]) 
 { 
     int i = 0, j = 0, k = 0; 
-  
-    // Traverse both array 
     while (i<n1 && j <n2) 
     { 
-        // Check if current element of first 
-        // array is smaller than current element 
-        // of second array. If yes, store first 
-        // array element and increment first array 
-        // index. Otherwise do same with second array 
+      
         if (arr1[i] < arr2[j]) 
             arr3[k++] = arr1[i++]; 
         else
