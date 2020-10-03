@@ -1,3 +1,70 @@
+// 394. Decode String
+
+class Solution {
+public:
+    
+    string decodeString(string s) 
+    {
+     int n=s.length();
+     stack<int>istk;
+     stack<char>cstk;
+     string temp="",res="";
+     for(int i=0;i<n;i++)
+     {
+      int cnt=0;
+         
+      if(s[i]>='0' && s[i]<='9')
+      {
+       while(s[i]>='0' && s[i]<='9')
+             cnt=cnt*10+s[i]-'0',i++;
+       i--;
+       istk.push(cnt);
+      }
+     
+             
+     else if(s[i]=='[')
+     {
+      if(s[i-1]>='0' && s[i-1]<='9')
+          cstk.push(s[i]);
+      else
+          cstk.push(s[i]),istk.push(1);
+     }
+             
+     else if(s[i]==']')
+     {
+      cnt=0;
+      temp="";
+      if(!istk.empty())
+          cnt=istk.top(),istk.pop();
+      while(!cstk.empty() && cstk.top()!='[')
+      {
+       temp=cstk.top()+temp;
+       cstk.pop();
+      }
+      if(!cstk.empty() && cstk.top()=='[')
+          cstk.pop();
+      for(int j=0;j<cnt;j++)
+          res=res+temp;
+      for(int j=0;j<res.length();j++)
+          cstk.push(res[j]);
+      res="";
+     }
+     
+    else
+       cstk.push(s[i]);
+             
+    }
+     string ans="";
+     while(!cstk.empty())
+     {
+      ans=cstk.top()+ans;
+      cstk.pop();
+     }
+     return ans;
+    }
+             
+ };
+
 // 91. Decode Ways
 
 class Solution {
