@@ -88,9 +88,9 @@ void quicksort(int arr[],int low,int high)
  }
 }
 
-// Selection sort --> It is both either u bring maximum element int the elast or minimum element int he beginning
+// Selection sort --> It is both either u bring maximum element int the last or minimum element int he beginning
 
-void selectionSort(int arr[], int n)
+void selectionSort(int arr[], int n) // --> bringing min element at first
 {
    for(int i=0;i<n-1;i++)
    {
