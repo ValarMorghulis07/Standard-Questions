@@ -64,6 +64,35 @@ int main()
  return 0;
 }
 
+// 452. Minimum Number of Arrows to Burst Balloons--> Same as Activity Selection with little difference in if condition.
+
+class Solution {
+public:
+    int findMinArrowShots(vector<vector<int>>& points)
+    {
+      int n=points.size();
+      if(n<2)
+          return n;
+      vector<pair<int,int>>vv;
+      for(int i=0;i<n;i++)
+           vv.push_back({points[i][1],points[i][0]});
+     sort(vv.begin(),vv.end());
+      int x2=vv[0].first;
+      int idx=1;
+      int cnt=1;
+      while(idx<n)
+      {
+       if(vv[idx].second>x2)
+       {
+        cnt++;
+        x2=vv[idx].first;
+       }
+       idx++;
+      }
+      return cnt;
+    }
+};
+
 // Minimum Platforms
 
 #include<bits/stdc++.h>
