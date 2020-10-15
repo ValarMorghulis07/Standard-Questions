@@ -128,7 +128,7 @@ bool IsLucky(ll n)
     return false;
   else
   {
-   pos-=pos/zz;
+   pos-=pos/zz; // new position after deletion
    zz++;
   }
  }
