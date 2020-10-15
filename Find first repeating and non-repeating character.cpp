@@ -86,7 +86,7 @@ void solve(string str,ll n)// in ane traversal
  vector<char>vec;
  queue<char>q;
  ll cnt[26]={0};
- for(ll i=0;i<n;i++)
+ for(ll i=0;i<n;i++) // geekgs
  {
   q.push(str[i]);
   cnt[str[i]-'a']++;
