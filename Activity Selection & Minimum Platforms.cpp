@@ -131,8 +131,8 @@ int main()
   f(n)
    vec.pb(m_p(arr[i],dep[i]));
   
-  sort(vec.begin(),vec.end());
-  ll zz=vec[0].second;
+   sort(vec.begin(),vec.end());
+   ll zz=vec[0].second;
    priority_queue<ll,vector<ll>,greater<ll>>pq;
    pq.push(zz);
    ll maxx=0;
