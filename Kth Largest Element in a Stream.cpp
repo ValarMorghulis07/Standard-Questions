@@ -1,4 +1,5 @@
 // 703. Kth Largest Element in a Stream
+// int add(int val) Returns the element representing the kth largest element in the stream.
 
 class KthLargest {
 public:
