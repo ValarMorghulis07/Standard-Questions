@@ -106,7 +106,7 @@ int main()
   }
   for(auto itr=mp.rbegin();itr!=mp.rend();++itr)
   {
-   mm.insert(pair<ll,ll>(itr->second,itr->first));
+   mm.insert({itr->second,itr->first});
   }
   for(auto itr=mm.rbegin();itr!=mm.rend();++itr)
   {
