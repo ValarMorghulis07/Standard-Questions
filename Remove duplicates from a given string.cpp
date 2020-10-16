@@ -30,8 +30,6 @@ string removeduplicates(string str)
   {
    str[length++]=str[p];
    counter=counter | (1 << x);
-
-
   }
   p++;
  }
