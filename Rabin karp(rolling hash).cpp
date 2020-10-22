@@ -162,7 +162,7 @@ void KMPpreprocess(string pat)
  }
 }
 
-void KMPsearch(string str,string pat)
+void KMPsearch(string str,string pat) //--> str=ABCXABCXABX,pat=ABCXABX
 {
  KMPpreprocess(pat);
  ll i=0,j=0;
