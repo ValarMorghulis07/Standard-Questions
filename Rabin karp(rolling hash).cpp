@@ -193,6 +193,11 @@ int main()
    reset[i]=-1;
   string str,pat;
   cin>>str>>pat;
+  if(pat.length()==0)
+  {
+   cout<<"0"<<"\n";
+   continue;
+  }
   ff=0;
   KMPsearch(str,pat);
   if(!ff)
