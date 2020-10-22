@@ -168,7 +168,7 @@ void KMPsearch(string str,string pat) //--> str=ABCXABCXABX,pat=ABCXABX
  ll i=0,j=0;
  while(i<str.size())
  {
-  while(j>=0 && str[i]!=pat[j])// suffix from string and prefix from pattern ,hence no need to revisit suffix
+  while(j>=0 && str[i]!=pat[j])// suffix from string and prefix from pattern ,hence no need to revisit string
     j=reset[j];
   i++;
   j++;
