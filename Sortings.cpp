@@ -99,6 +99,12 @@ void quicksort(int arr[],int low,int high)
 
 // Selection sort --> It is both either u bring maximum element int the last or minimum element int he beginning
 
+/*
+Stability : The default implementation is not stable. However it can be made stable. Please see stable selection sort for details.
+
+In Place : Yes, it does not require extra space.
+*/
+
 void selectionSort(int arr[], int n) // --> bringing min element at first
 {
    for(int i=0;i<n-1;i++)
