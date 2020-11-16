@@ -74,3 +74,40 @@ public:
       
     }
 };
+
+// 1642. Furthest Building You Can Reach
+
+class Solution {
+public:
+    int furthestBuilding(vector<int>& heights, int bricks, int ladders) 
+    {
+     int n=heights.size();
+     priority_queue<int,vector<int>,greater<int>>pq;
+     int idx=0;
+     while(idx<n-1)
+     {
+      if(heights[idx]>=heights[idx+1])
+          idx++;
+      else
+      {
+       if(pq.size()<ladders)
+           pq.push(heights[idx+1]-heights[idx]);
+       else
+       {
+        if(!pq.empty() && (heights[idx+1]-heights[idx])>pq.top() && bricks>=pq.top())
+        {
+          bricks-=pq.top();
+          pq.pop();
+          pq.push(heights[idx+1]-heights[idx]);
+        }
+        else if(bricks>=(heights[idx+1]-heights[idx]))
+            bricks-=(heights[idx+1]-heights[idx]);
+        else
+            break;
+       }
+       idx++;
+      }
+     }
+     return idx;
+    }
+};
