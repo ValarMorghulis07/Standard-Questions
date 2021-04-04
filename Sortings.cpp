@@ -1,3 +1,10 @@
+/*
+In more details it is implemented using hybrid of QuickSort, HeapSort and InsertionSort.By default, 
+it uses QuickSort but if QuickSort is doing unfair partitioning and taking more than N*logN time, 
+it switches to HeapSort and when the array size becomes really small, it switches to InsertionSort. 
+ */
+
+
 /*               BEST             AVG            WORST
 Selection Sort	  Ω(n^2)	        θ(n^2)	          O(n^2)
 Bubble Sort	     Ω(n)	          θ(n^2)	          O(n^2)
