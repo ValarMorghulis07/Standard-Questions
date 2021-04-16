@@ -178,7 +178,7 @@ void KMPsearch(string str,string pat) //--> str=ABCXABCXABX,pat=ABCXABX
    ff=1;
    j=reset[j];
   }
- }
+ }// like for pat="ABCXABX" ,reset[]={-1,0,0,0,1,2,0};
 
 }
 
