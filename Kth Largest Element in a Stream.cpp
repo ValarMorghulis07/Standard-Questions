@@ -84,7 +84,7 @@ public:
      int n=heights.size();
      priority_queue<int,vector<int>,greater<int>>pq;
      int idx=0;
-     while(idx<n-1)
+     while(idx<n-1) //[10,15,19,29]
      {
       if(heights[idx]>=heights[idx+1])
           idx++;
