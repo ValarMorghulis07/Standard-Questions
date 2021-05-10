@@ -63,23 +63,63 @@ public:
 
 class Solution {
 public:
+    void Merge(pair<int,int> temp[],vector<int>& ans,int lo,int mid,int hi)
+    {
+     int n1=mid-lo+1,n2=hi-mid;
+     pair<int,int>L[n1],R[n2];
+     for(int i=0;i<n1;i++)
+         L[i]=temp[lo+i];
+     for(int i=0;i<n2;i++)
+         R[i]=temp[mid+1+i];
+     int p=0,q=0,k=lo,cnt=0;
+     while(p<n1 && q<n2)
+     {
+      if(L[p].first<=R[q].first)
+      {
+       ans[L[p].second]+=cnt;
+       temp[k++]=L[p++];
+      }
+      else
+      {
+       cnt++;
+       temp[k++]=R[q++];
+      }
+     }
+     while(p<n1)
+     {
+      ans[L[p].second]+=cnt;
+      temp[k++]=L[p++];
+     }
+     while(q<n2)
+         temp[k++]=R[q++];
+         
+    }
+    
+    void MergeSort(pair<int,int> temp[],vector<int>&ans,int lo,int hi)
+    {
+     if(lo<hi)
+     {
+      int mid=(lo+hi)>>1;
+      MergeSort(temp,ans,lo,mid);
+      MergeSort(temp,ans,mid+1,hi);
+      Merge(temp,ans,lo,mid,hi);
+     }
+    }
     vector<int> countSmaller(vector<int>& nums) 
     {
      int n=nums.size();
-     vector<int>vv;
-     multiset<int>ss;
-     
-     for(int i=n-1;i>=0;i--)
+     if(n==0)return {};
+     vector<int>ans(n,0);
+     pair<int,int>temp[n];
+     for(int i=0;i<n;i++)
      {
-      ss.insert(nums[i]);
-      auto xx=ss.lower_bound(nums[i]);
-      vv.push_back(distance(ss.begin(),xx));
+       temp[i].first=nums[i];
+       temp[i].second=i;
      }
-     reverse(vv.begin(),vv.end());
-     return vv;
-     
+     MergeSort(temp,ans,0,n-1);
+     return ans;
+       
     }
 };
-
 
 
