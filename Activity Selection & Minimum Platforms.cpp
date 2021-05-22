@@ -95,6 +95,41 @@ public:
     }
 };
 
+// 1235. Maximum Profit in Job Scheduling (For anay query --> https://leetcode.com/problems/maximum-profit-in-job-scheduling/discuss/411535/C%2B%2B-DP-explained-with-an-example-...)
+
+#define ff first
+#define ss second
+class Solution {
+public:
+    static bool cmp(pair<pair<int,int>,int>& a,pair<pair<int,int>,int>& b)
+    {
+     return (a.ff.ff<b.ff.ff || (a.ff.ff==b.ff.ff && a.ff.ss<b.ff.ss));
+    }
+    int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit)     {
+     int n=profit.size();
+     vector<pair<pair<int,int>,int>>vv;
+     for(int i=0;i<n;i++)
+         vv.push_back(make_pair(make_pair(endTime[i],startTime[i]),profit[i]));
+     sort(vv.begin(),vv.end(),cmp);
+     vector<int>dp(n,0);
+     dp[0]=vv[0].ss;
+     for(int j=1;j<n;j++)
+     {
+      int last=0;
+      for(int i=j-1;i>=0;i--)
+      {
+       if(vv[j].ff.ss>=vv[i].ff.ff)
+       {
+        last=dp[i];
+        break;
+       }
+      }
+      dp[j]=max(dp[j-1],last+vv[j].ss);
+     }
+     return dp[n-1];
+    }
+};
+
 // Minimum Platforms
 
 #include<bits/stdc++.h>
