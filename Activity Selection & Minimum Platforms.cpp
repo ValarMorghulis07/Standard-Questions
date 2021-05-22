@@ -68,28 +68,30 @@ int main()
 
 class Solution {
 public:
-    int findMinArrowShots(vector<vector<int>>& points)
+    static bool cmp(pair<int,int>& a,pair<int,int>& b)
     {
-      int n=points.size();
-      if(n<2)
-          return n;
-      vector<pair<int,int>>vv;
-      for(int i=0;i<n;i++)
-           vv.push_back({points[i][1],points[i][0]});
-     sort(vv.begin(),vv.end());
-      int x2=vv[0].first;
-      int idx=1;
-      int cnt=1;
-      while(idx<n)
+     return (a.first<b.first || (a.first==b.first && a.second<b.second));
+    }
+    int findMinArrowShots(vector<vector<int>>& points) 
+    {
+     int n=points.size();
+     vector<pair<int,int>>vv;
+     for(int i=0;i<n;i++)
+         vv.push_back({points[i][1],points[i][0]});
+     sort(vv.begin(),vv.end(),cmp);
+     int zz=vv[0].first;
+     int ans=1;
+     for(int i=1;i<n;i++)
+     {
+      if(zz>=vv[i].second)
+          continue;
+     else
       {
-       if(vv[idx].second>x2)
-       {
-        cnt++;
-        x2=vv[idx].first;
-       }
-       idx++;
+        ans++;
+        zz=vv[i].first;
       }
-      return cnt;
+     }
+     return ans;
     }
 };
 
