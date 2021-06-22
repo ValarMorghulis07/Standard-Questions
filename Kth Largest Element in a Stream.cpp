@@ -94,7 +94,7 @@ public:
            pq.push(heights[idx+1]-heights[idx]);
        else
        {
-        if(!pq.empty() && (heights[idx+1]-heights[idx])>pq.top() && bricks>=pq.top())
+        if(!pq.empty() && (heights[idx+1]-heights[idx])>pq.top() && bricks>=pq.top()) // ( bricks>=pq.top()--> check if there enough bricks available for use)
         {
           bricks-=pq.top(); // using the bricks for smaller elevation
           pq.pop();
