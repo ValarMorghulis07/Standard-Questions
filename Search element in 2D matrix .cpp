@@ -5,7 +5,7 @@ Integers in each row are sorted in ascending from left to right.
 Integers in each column are sorted in ascending from top to bottom.
 */
 
-/* 
+/*  --> use this tc for both questions
 grid[][]={
           {1,3,5,7}
           {10,11,16,20}
