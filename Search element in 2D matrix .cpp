@@ -45,7 +45,7 @@ public:
     }
 };
 
-// 74. Search a 2D Matrix --> It can be done in upper way also
+// 74. Search a 2D Matrix --> ( It can be done in upper way in O(m+n) complexity)
 
 /*
 Integers in each row are sorted from left to right.
