@@ -53,7 +53,9 @@ int main()
   ll depar=vec[0].first;
   for(ll i=1;i<n;i++)
   {
-    if(vec[i].second>=depar)
+    if(depar>=vec[i].second)
+      continue;
+    else
     {
      cnt++;
      depar=vec[i].first;
