@@ -96,7 +96,7 @@ public:
        {
         if(!pq.empty() && (heights[idx+1]-heights[idx])>pq.top() && bricks>=pq.top())
         {
-          bricks-=pq.top(); // using the bricks
+          bricks-=pq.top(); // using the bricks for smaller elevation
           pq.pop();
           pq.push(heights[idx+1]-heights[idx]); // keeping it for ladder
         }
