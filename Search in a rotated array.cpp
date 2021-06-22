@@ -34,6 +34,42 @@ public:
     }
 };
 
+// Iterative -->
+
+class Solution {
+public:
+    int bs(vector<int>&nums,int x,int lo,int hi)
+    {
+     while(lo<=hi)
+     {
+     int mid=(lo+hi)>>1;
+     if(nums[mid]==x)
+         return mid;
+     else if(nums[lo]<=nums[mid])
+     {
+      if(x>=nums[lo] && x<=nums[mid])
+          hi=mid-1;
+      else
+          lo=mid+1;
+     }
+     else
+     {
+      if(x>=nums[mid] && x<=nums[hi])
+          lo=mid+1;
+      else
+          hi=mid-1;
+     }
+     }
+     return -1;
+    }
+    int search(vector<int>& nums, int target) 
+    {
+     int n=nums.size();
+     int zz=bs(nums,target,0,n-1);
+     return zz;
+    }
+};
+
 // 81. Search in Rotated Sorted Array II
 
 class Solution {
