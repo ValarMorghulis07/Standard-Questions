@@ -5,6 +5,14 @@ Integers in each row are sorted in ascending from left to right.
 Integers in each column are sorted in ascending from top to bottom.
 */
 
+/* 
+grid[][]={
+          {1,3,5,7}
+          {10,11,16,20}
+          {23,30,34,60}
+          }
+*/
+
 class Solution {
 public:
     bool bs(vector<vector<int>>& matrix,int x) // O(m+n)
