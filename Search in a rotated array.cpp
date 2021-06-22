@@ -196,7 +196,7 @@ int Solution::solve(vector<int> &A, int B)
 
 }
 
-// 162. Find Peak Element
+// 162. Find Peak Element (Bitonic Point)
 
 /*
 A peak element is an element that is greater than its neighbors.
